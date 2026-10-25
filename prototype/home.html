@@ -1,0 +1,692 @@
+<title>Studio Nexify Homepage</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..500&family=Hanken+Grotesk:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: atelier catalogue. Wide serif headlines over a plaster ground, photography in layer-lined frames, specs set in mono like a print slip. */
+:root {
+  --plaster: #ECE8E1;      /* page ground */
+  --vellum: #E1DBD1;       /* raised surface */
+  --graphite: #1E1C19;     /* ink */
+  --graphite-soft: #5A554D;/* secondary ink */
+  --brass: #8C6A34;        /* accent, text-safe on plaster */
+  --patina: #3E5A52;       /* secondary accent for engineering */
+  --line: #C8C0B3;
+  --on-accent: #F7F3EC;
+
+  --display: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
+  --body: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.75rem;
+  --step-3: clamp(2rem, 4.2vw, 3.25rem);
+  --step-4: clamp(2.6rem, 6.4vw, 5.4rem);
+
+  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r: max(16px, env(safe-area-inset-right, 0px));
+  --wrap: 1240px;
+  --header-h: 64px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --plaster: #14130F; --vellum: #1E1C17; --graphite: #ECE6DA; --graphite-soft: #ABA394;
+    --brass: #CDA661; --patina: #86AA9D; --line: #36322A; --on-accent: #16130E;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --plaster: #14130F; --vellum: #1E1C17; --graphite: #ECE6DA; --graphite-soft: #ABA394;
+  --brass: #CDA661; --patina: #86AA9D; --line: #36322A; --on-accent: #16130E;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--plaster);
+  color: var(--graphite);
+  font-family: var(--body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 60; background: var(--plaster);
+}
+h1, h2, h3 { font-family: var(--display); font-weight: 500; line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+p { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; border-radius: 2px; }
+
+.wrap {
+  max-width: var(--wrap); margin-inline: auto;
+  padding-left: var(--gutter); padding-right: var(--gutter-r);
+}
+.eyebrow {
+  font-family: var(--mono); font-size: var(--step--1); letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--graphite-soft);
+}
+.spec {
+  font-family: var(--mono); font-size: var(--step--1); color: var(--graphite-soft);
+  font-variant-numeric: tabular-nums;
+}
+.btn {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 48px;
+  padding-inline: 22px; border-radius: 999px; font: 500 var(--step-0)/1 var(--body);
+  text-decoration: none; border: 1px solid var(--graphite); cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+}
+.btn-solid { background: var(--graphite); color: var(--plaster); }
+.btn-solid:hover { background: var(--brass); border-color: var(--brass); color: var(--on-accent); }
+.btn-ghost { background: transparent; color: var(--graphite); }
+.btn-ghost:hover { border-color: var(--brass); color: var(--brass); }
+
+/* Photo frames: placeholders drawn as print layer lines until real photography is dropped in */
+.frame {
+  position: relative; border-radius: 4px; overflow: hidden; max-width: 100%;
+  background:
+    repeating-linear-gradient(0deg, color-mix(in srgb, var(--graphite) 7%, transparent) 0 1px, transparent 1px 6px),
+    var(--vellum);
+  border: 1px solid var(--line);
+}
+.frame-label {
+  position: absolute; left: 14px; bottom: 12px; right: 14px;
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.04em; color: var(--graphite-soft);
+}
+
+/* Header */
+.site-header {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50;
+  background: color-mix(in srgb, var(--plaster) 92%, transparent);
+  backdrop-filter: blur(8px); border-bottom: 1px solid var(--line);
+}
+.site-header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; height: var(--header-h); }
+.mark { font-family: var(--display); font-size: 1.4rem; font-weight: 600; text-decoration: none; letter-spacing: 0.01em; }
+.mark em { font-style: italic; font-weight: 400; color: var(--brass); }
+.nav { display: flex; gap: 28px; align-items: center; }
+.nav a { text-decoration: none; font-size: 0.9375rem; color: var(--graphite-soft); }
+.nav a:hover { color: var(--graphite); }
+.nav .btn { min-height: 40px; padding-inline: 18px; font-size: 0.9375rem; color: var(--plaster); }
+@media (max-width: 860px) { .nav a:not(.btn) { display: none; } }
+
+/* Hero */
+.hero { padding-block: clamp(40px, 7vw, 96px) clamp(48px, 6vw, 80px); }
+.hero .wrap { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+.hero-copy { display: grid; gap: 28px; min-width: 0; }
+.hero h1 { font-size: var(--step-4); }
+.hero h1 em { font-style: italic; font-weight: 400; color: var(--brass); }
+.hero .lead { font-size: var(--step-1); color: var(--graphite-soft); max-width: 34ch; line-height: 1.5; }
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 8px 28px; padding-top: 20px; border-top: 1px solid var(--line); }
+.hero-stage { position: relative; aspect-ratio: 4 / 5; max-width: 100%; will-change: transform; }
+.hero-stage canvas { width: 100%; height: 100%; display: block; }
+.readout {
+  position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; gap: 12px;
+  padding-top: 10px; border-top: 1px solid var(--line);
+}
+@media (max-width: 860px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .hero-stage { aspect-ratio: 1 / 1; max-height: 480px; width: 100%; margin-inline: auto; }
+}
+
+/* Section scaffolding */
+.section { padding-block: clamp(64px, 9vw, 128px); }
+.section-head { display: grid; gap: 14px; margin-bottom: clamp(32px, 5vw, 56px); max-width: 760px; }
+.section-head h2 { font-size: var(--step-3); }
+.section-head p { color: var(--graphite-soft); max-width: 60ch; }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+
+/* Pinned vertical strip: stacked by default, pinned when JS + wide screen + motion allowed */
+.strip-panels { display: grid; gap: 64px; }
+.panel { display: grid; grid-template-columns: 1fr 1.1fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+.panel-copy { display: grid; gap: 20px; min-width: 0; }
+.panel-copy h3 { font-size: var(--step-3); }
+.panel-copy .tag { color: var(--brass); }
+.panel[data-tone="patina"] .tag { color: var(--patina); }
+.panel-copy ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.panel-copy li { padding-left: 22px; position: relative; color: var(--graphite-soft); }
+.panel-copy li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 12px; border-top: 1px solid var(--brass); }
+.panel .frame { aspect-ratio: 5 / 4; }
+.panel-link { font-weight: 500; text-underline-offset: 4px; }
+@media (max-width: 860px) { .panel { grid-template-columns: 1fr; } }
+
+.strip.is-pinned { height: 300vh; }
+.strip.is-pinned .strip-sticky {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--header-h));
+  height: calc(100vh - var(--header-h)); display: grid; align-content: center; gap: 28px;
+}
+.strip.is-pinned .section-head { margin-bottom: 0; }
+.strip.is-pinned .strip-panels { display: grid; grid-template-areas: "stack"; gap: 0; }
+.strip.is-pinned .panel {
+  grid-area: stack; opacity: 0; transform: translateY(24px); pointer-events: none;
+  transition: opacity .6s ease, transform .6s ease;
+}
+.strip.is-pinned .panel.is-active { opacity: 1; transform: none; pointer-events: auto; }
+.strip.is-pinned .panel .frame { aspect-ratio: 16 / 11; max-height: 52vh; }
+.strip-progress { display: none; gap: 10px; }
+.strip.is-pinned .strip-progress { display: flex; }
+.strip-progress button {
+  flex: 1; background: none; border: 0; border-top: 2px solid var(--line); padding: 10px 0 0; text-align: left;
+  font-family: var(--mono); font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--graphite-soft); cursor: pointer;
+}
+.strip-progress button[aria-current="true"] { border-top-color: var(--brass); color: var(--graphite); }
+
+/* Before / after */
+.ba { background: var(--vellum); border-block: 1px solid var(--line); }
+.ba-grid { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: clamp(24px, 4vw, 64px); align-items: center; }
+.ba-copy { display: grid; gap: 20px; min-width: 0; }
+.ba-copy h2 { font-size: var(--step-3); }
+.ba-copy p { color: var(--graphite-soft); }
+.ba-specs { display: grid; grid-template-columns: auto 1fr; gap: 8px 20px; margin: 0; }
+.ba-specs dt { font-family: var(--mono); font-size: var(--step--1); color: var(--graphite-soft); text-transform: uppercase; letter-spacing: .06em; }
+.ba-specs dd { margin: 0; font-variant-numeric: tabular-nums; }
+.compare { --pos: 50%; position: relative; aspect-ratio: 4 / 3; max-width: 100%; border-radius: 4px; overflow: hidden; border: 1px solid var(--line); background: var(--plaster); user-select: none; }
+.compare-pane { position: absolute; inset: 0; display: grid; place-items: center; }
+.compare-pane svg { width: 70%; height: 70%; }
+.compare-after { clip-path: inset(0 0 0 var(--pos)); background:
+  repeating-linear-gradient(0deg, color-mix(in srgb, var(--brass) 10%, transparent) 0 1px, transparent 1px 5px), var(--plaster); }
+.compare-tag { position: absolute; top: 14px; font-family: var(--mono); font-size: 0.75rem; letter-spacing: .06em; text-transform: uppercase; padding: 6px 10px; border-radius: 999px; background: var(--plaster); border: 1px solid var(--line); }
+.compare-tag.before { left: 14px; }
+.compare-tag.after { right: 14px; color: var(--brass); }
+.compare-handle { position: absolute; top: 0; bottom: 0; left: var(--pos); width: 0; border-left: 1px solid var(--graphite); pointer-events: none; }
+.compare-handle::after {
+  content: "⟷"; position: absolute; top: 50%; left: 0; transform: translate(-50%, -50%);
+  width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center;
+  background: var(--graphite); color: var(--plaster); font-size: 1.1rem;
+}
+.compare input[type="range"] { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: ew-resize; margin: 0; }
+.compare:has(input:focus-visible) .compare-handle::after { outline: 2px solid var(--brass); outline-offset: 3px; }
+.compare .frame-label { left: 14px; bottom: 12px; }
+@media (max-width: 860px) { .ba-grid { grid-template-columns: 1fr; } }
+
+/* Process timeline with depth layers */
+.process-list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border-top: 1px solid var(--graphite); }
+.step { position: relative; padding: 28px 24px 40px 0; display: grid; gap: 14px; align-content: start; min-width: 0; overflow: hidden; }
+.step + .step { padding-left: 24px; border-left: 1px solid var(--line); }
+.step-num {
+  font-family: var(--display); font-style: italic; font-size: clamp(5rem, 9vw, 8rem); line-height: .8;
+  color: color-mix(in srgb, var(--brass) 28%, transparent); will-change: transform;
+}
+.step h3 { font-size: var(--step-2); }
+.step p { color: var(--graphite-soft); }
+@media (max-width: 960px) {
+  .process-list { grid-template-columns: repeat(2, 1fr); }
+  .step:nth-child(3) { padding-left: 0; border-left: 0; }
+  .step:nth-child(n+3) { border-top: 1px solid var(--line); }
+}
+@media (max-width: 560px) {
+  .process-list { grid-template-columns: 1fr; }
+  .step, .step + .step { padding-left: 0; border-left: 0; }
+  .step + .step { border-top: 1px solid var(--line); }
+}
+
+/* Clients */
+.clients { padding-block: 56px; }
+.clients .wrap { display: grid; gap: 24px; }
+.logo-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.logo-slot { height: 72px; border: 1px dashed var(--line); border-radius: 4px; display: grid; place-items: center; font-family: var(--mono); font-size: 0.75rem; color: var(--graphite-soft); }
+@media (max-width: 860px) { .logo-row { grid-template-columns: repeat(3, 1fr); } }
+
+/* More industries */
+.more-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.more-card { display: grid; gap: 14px; text-decoration: none; min-width: 0; }
+.more-card .frame { aspect-ratio: 4 / 5; transition: border-color .2s; }
+.more-card:hover .frame { border-color: var(--brass); }
+.more-card h3 { font-size: var(--step-1); font-family: var(--display); }
+.more-card p { color: var(--graphite-soft); font-size: 0.9375rem; }
+@media (max-width: 960px) { .more-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .more-grid { grid-template-columns: 1fr; } }
+
+/* Quote */
+.quote { background: var(--graphite); color: var(--plaster); }
+.quote .eyebrow, .quote .spec, .quote p { color: color-mix(in srgb, var(--plaster) 72%, transparent); }
+.quote-grid { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: clamp(32px, 5vw, 80px); }
+.quote-copy { display: grid; gap: 22px; align-content: start; min-width: 0; }
+.quote-copy h2 { font-size: var(--step-3); color: var(--plaster); }
+.wa { display: grid; gap: 6px; padding: 20px; border: 1px solid color-mix(in srgb, var(--plaster) 22%, transparent); border-radius: 4px; }
+.wa strong { font-family: var(--mono); font-size: var(--step-1); font-weight: 500; color: var(--plaster); user-select: all; }
+form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field.full { grid-column: 1 / -1; }
+.field label { font-size: 0.875rem; color: color-mix(in srgb, var(--plaster) 80%, transparent); }
+.field input, .field select, .field textarea {
+  font: inherit; color: var(--plaster); background: color-mix(in srgb, var(--plaster) 6%, transparent);
+  border: 1px solid color-mix(in srgb, var(--plaster) 24%, transparent); border-radius: 4px; padding: 12px 14px; min-height: 48px; width: 100%;
+}
+.field select option { color: #1E1C19; }
+.field textarea { min-height: 110px; resize: vertical; }
+.field input[type="file"] { padding: 10px; }
+.quote .btn-solid { background: var(--plaster); color: var(--graphite); border-color: var(--plaster); justify-self: start; }
+.quote .btn-solid:hover { background: var(--brass); border-color: var(--brass); color: var(--on-accent); }
+.form-note { grid-column: 1 / -1; font-size: 0.875rem; }
+@media (max-width: 860px) { .quote-grid { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { form { grid-template-columns: 1fr; } }
+
+/* Footer + palette note */
+.site-footer { padding-block: 40px; border-top: 1px solid var(--line); }
+.site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; }
+.palette { padding-block: 56px 72px; background: var(--vellum); border-top: 1px solid var(--line); }
+.palette .wrap { display: grid; gap: 24px; }
+.swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.swatch { display: grid; gap: 8px; min-width: 0; }
+.chip { height: 88px; border-radius: 4px; border: 1px solid var(--line); }
+.swatch b { font-weight: 600; font-size: 0.9375rem; }
+@media (max-width: 860px) { .swatches { grid-template-columns: repeat(3, 1fr); } }
+</style>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="mark" href="#top">Studio <em>Nexify</em></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#industries">Industries</a>
+      <a href="#restore">Work</a>
+      <a href="#process">Process</a>
+      <a href="#more">Materials</a>
+      <a class="btn btn-solid" href="#quote">Request a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <!-- 1. Hero: layer-build -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-copy">
+        <p class="eyebrow">3D design &amp; printing studio · Vadodara, India</p>
+        <h1>Drawn in-house. <em>Printed</em> layer by layer.</h1>
+        <p class="lead">We design and 3D print corporate gifts, interior pieces and engineering parts for clients across India and overseas.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-solid" href="#quote">Request a quote</a>
+          <a class="btn btn-ghost" href="#industries">See what we make</a>
+        </div>
+        <div class="hero-meta">
+          <span class="spec">In-house CAD team</span>
+          <span class="spec">PLA · PETG · ABS · ASA · Nylon · Resin</span>
+          <span class="spec">Ships pan-India &amp; export</span>
+        </div>
+      </div>
+      <div class="hero-stage" id="hero-stage" aria-hidden="true">
+        <canvas id="build"></canvas>
+        <div class="readout">
+          <span class="spec" id="layer-count">Layer 140 / 140</span>
+          <span class="spec">0.20 mm · PETG · Brass silk</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- 2. Pinned scroll strip: three primary verticals -->
+  <section class="section strip" id="industries">
+    <div class="wrap strip-sticky">
+      <div class="section-head">
+        <p class="eyebrow">Who we make for</p>
+        <h2>Three studios under one roof</h2>
+      </div>
+      <div class="strip-progress" role="tablist" aria-label="Industries">
+        <button type="button" data-go="0" aria-current="true">Corporate gifting</button>
+        <button type="button" data-go="1">Industrial &amp; automotive</button>
+        <button type="button" data-go="2">Architects &amp; interiors</button>
+      </div>
+      <div class="strip-panels">
+        <article class="panel is-active">
+          <div class="panel-copy">
+            <p class="eyebrow tag">Corporate gifting</p>
+            <h3>Gifts your clients keep on their desks</h3>
+            <ul>
+              <li>Your logo embossed, debossed or inlaid into the print</li>
+              <li>Colours matched to your brand, packaging included</li>
+              <li>One approved design, repeated across the whole order</li>
+            </ul>
+            <p class="spec">Desk organisers · coasters · keychains · trophies</p>
+            <a class="panel-link" href="#quote">Ask for the gifting catalogue →</a>
+          </div>
+          <div class="frame"><span class="frame-label">Photo · branded desk set for a client</span></div>
+        </article>
+        <article class="panel" data-tone="patina">
+          <div class="panel-copy">
+            <p class="eyebrow tag">Industrial &amp; automotive</p>
+            <h3>Discontinued parts, made again</h3>
+            <ul>
+              <li>Reverse-engineered from a broken sample or a drawing</li>
+              <li>Engineering plastics for heat, impact and UV</li>
+              <li>Jigs, fixtures, brackets, clips, trims and housings</li>
+            </ul>
+            <p class="spec">ASA · ABS · PETG · Nylon · CF-Nylon · typical FDM tolerance ±0.2 mm</p>
+            <a class="panel-link" href="#quote">Send us your part →</a>
+          </div>
+          <div class="frame"><span class="frame-label">Photo · replacement bracket beside the original</span></div>
+        </article>
+        <article class="panel">
+          <div class="panel-copy">
+            <p class="eyebrow tag">Architects &amp; interiors</p>
+            <h3>Pieces drawn for one room</h3>
+            <ul>
+              <li>Lighting, planters, wall panels and custom hardware</li>
+              <li>Scale models for client presentations</li>
+              <li>Built to your drawings, finishes and dimensions</li>
+            </ul>
+            <p class="spec">Large pieces printed in sections and joined invisibly</p>
+            <a class="panel-link" href="#quote">Brief us on a project →</a>
+          </div>
+          <div class="frame"><span class="frame-label">Photo · pendant lamp in a client interior</span></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. Before / after -->
+  <section class="section ba" id="restore">
+    <div class="wrap ba-grid">
+      <div class="ba-copy">
+        <p class="eyebrow">Replacement parts</p>
+        <h2>Broken on Monday. Printed by Friday.</h2>
+        <p>Drag the slider. A machine stops because a small plastic part failed and the maker no longer sells it. We measure the original, model it in CAD and print it in a stronger material.</p>
+        <dl class="ba-specs">
+          <dt>Input</dt><dd>Broken sample, photo or drawing</dd>
+          <dt>Output</dt><dd>STEP file + printed part</dd>
+          <dt>Material</dt><dd>Chosen for load, heat and wear</dd>
+        </dl>
+      </div>
+      <div class="compare" id="compare">
+        <div class="compare-pane compare-before"><svg id="gear-before" viewBox="-110 -110 220 220" aria-hidden="true"></svg></div>
+        <div class="compare-pane compare-after"><svg id="gear-after" viewBox="-110 -110 220 220" aria-hidden="true"></svg></div>
+        <span class="compare-tag before">Before</span>
+        <span class="compare-tag after">After</span>
+        <span class="compare-handle"></span>
+        <span class="frame-label">Illustration · swap in your photo pair</span>
+        <label class="visually-hidden" for="ba-range" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Compare before and after</label>
+        <input type="range" id="ba-range" min="0" max="100" value="50">
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Process timeline -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">How a project runs</p>
+        <h2>From a sketch to a finished part</h2>
+        <p>Every job goes through the same four stages. You approve the design before anything is printed.</p>
+      </div>
+      <ol class="process-list">
+        <li class="step"><span class="step-num" data-depth="0.12">1</span><h3>Brief &amp; sketch</h3><p>You send an idea, a photo, a drawing or a broken part. We agree on size, material and quantity.</p><span class="spec">Input · photo, PDF, sample</span></li>
+        <li class="step"><span class="step-num" data-depth="0.2">2</span><h3>CAD model</h3><p>Our design team models the part and shares renders for your approval.</p><span class="spec">STEP · STL · OBJ</span></li>
+        <li class="step"><span class="step-num" data-depth="0.28">3</span><h3>Print</h3><p>We pick the process and layer height for the job: fine detail or strength.</p><span class="spec">Layer 0.08–0.28 mm · FDM &amp; resin</span></li>
+        <li class="step"><span class="step-num" data-depth="0.36">4</span><h3>Finish &amp; ship</h3><p>Sanding, priming, painting and assembly, then packed and shipped.</p><span class="spec">Pan-India · export</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Clients -->
+  <section class="clients" aria-label="Clients">
+    <div class="wrap">
+      <p class="eyebrow">Trusted by teams in India and overseas</p>
+      <div class="logo-row">
+        <span class="logo-slot">Client logo</span><span class="logo-slot">Client logo</span><span class="logo-slot">Client logo</span>
+        <span class="logo-slot">Client logo</span><span class="logo-slot">Client logo</span><span class="logo-slot">Client logo</span>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <!-- Secondary verticals -->
+  <section class="section" id="more">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Also from the studio</p>
+        <h2>More of what we make</h2>
+      </div>
+      <div class="more-grid">
+        <a class="more-card" href="#quote"><div class="frame"><span class="frame-label">Photo · one-off product</span></div><h3>Bespoke products</h3><p>Single pieces and small batches designed from scratch.</p></a>
+        <a class="more-card" href="#quote"><div class="frame"><span class="frame-label">Photo · idol, finished</span></div><h3>Idols &amp; religious artifacts</h3><p>Detailed murtis and temple pieces, painted or metallic finish.</p></a>
+        <a class="more-card" href="#quote"><div class="frame"><span class="frame-label">Photo · toy range</span></div><h3>Toys &amp; stationery</h3><p>Fidget toys, desk tools and custom stationery lines.</p></a>
+        <a class="more-card" href="#quote"><div class="frame"><span class="frame-label">Photo · resin detail</span></div><h3>Advanced printing</h3><p>Resin, multi-material and large-format prints.</p></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quote -->
+  <section class="section quote" id="quote">
+    <div class="wrap quote-grid">
+      <div class="quote-copy">
+        <p class="eyebrow">Start a project</p>
+        <h2>Tell us what you need made</h2>
+        <p>Attach a model, a drawing or a photo. We reply with a design plan and a price.</p>
+        <div class="wa">
+          <span class="spec">WhatsApp the studio</span>
+          <strong>+91 XXXXX XXXXX</strong>
+          <span class="spec">Mon–Sat · 10:00–19:00 IST</span>
+        </div>
+      </div>
+      <form id="quote-form" novalidate>
+        <div class="field"><label for="q-name">Name</label><input id="q-name" name="name" autocomplete="name" value="Riya Shah"></div>
+        <div class="field"><label for="q-company">Company</label><input id="q-company" name="company" autocomplete="organization" value="Example Interiors LLP"></div>
+        <div class="field"><label for="q-industry">Industry</label>
+          <select id="q-industry" name="industry">
+            <option>Corporate gifting</option><option>Industrial &amp; automotive</option><option selected>Architects &amp; interiors</option>
+            <option>Bespoke product</option><option>Idols &amp; religious artifacts</option><option>Toys &amp; stationery</option><option>Something else</option>
+          </select>
+        </div>
+        <div class="field"><label for="q-qty">Quantity</label><input id="q-qty" name="qty" inputmode="numeric" value="12"></div>
+        <div class="field full"><label for="q-file">Files (STL, STEP, OBJ, PDF, photos)</label><input id="q-file" name="file" type="file" multiple accept=".stl,.step,.stp,.obj,.pdf,image/*"></div>
+        <div class="field full"><label for="q-msg">What should we make?</label><textarea id="q-msg" name="msg">Six pendant lamp shades for a café, 300 mm diameter, matte ivory, to match the attached drawing.</textarea></div>
+        <button class="btn btn-solid" type="submit">Send request</button>
+        <p class="form-note spec" id="form-note" role="status">Example entries shown. This prototype does not send anything yet.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="mark">Studio <em>Nexify</em></span>
+    <span class="spec">Designed &amp; printed in Vadodara, Gujarat · Ships pan-India &amp; export</span>
+  </div>
+</footer>
+
+<!-- Prototype note: proposed palette -->
+<section class="palette" aria-label="Proposed palette">
+  <div class="wrap">
+    <div class="section-head" style="margin-bottom:0">
+      <p class="eyebrow">Prototype note · proposed palette</p>
+      <h2>Plaster, graphite and brass</h2>
+      <p>Stone-grey neutrals keep photography in front. Brass marks the premium work; patina green marks engineering. Switch your device to dark mode to see the night palette.</p>
+    </div>
+    <div class="swatches">
+      <div class="swatch"><div class="chip" style="background:var(--plaster)"></div><b>Plaster</b><span class="spec">#ECE8E1 / #14130F</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--vellum)"></div><b>Vellum</b><span class="spec">#E1DBD1 / #1E1C17</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--graphite)"></div><b>Graphite</b><span class="spec">#1E1C19 / #ECE6DA</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--graphite-soft)"></div><b>Graphite soft</b><span class="spec">#5A554D / #ABA394</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--brass)"></div><b>Brass</b><span class="spec">#8C6A34 / #CDA661</span></div>
+      <div class="swatch"><div class="chip" style="background:var(--patina)"></div><b>Patina</b><span class="spec">#3E5A52 / #86AA9D</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const css = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+
+  /* 1. Hero layer-build: a ribbed vase drawn as stacked print layers */
+  const canvas = document.getElementById("build");
+  const stage = document.getElementById("hero-stage");
+  const counter = document.getElementById("layer-count");
+  const ctx = canvas.getContext("2d");
+  const LAYERS = 140;
+  let progress = reduce ? 1 : 0;
+
+  function radiusAt(t, a) {
+    const profile = 0.62 + 0.3 * Math.sin(Math.PI * (t * 0.95 + 0.12)) - 0.22 * t;
+    const rib = 1 + 0.035 * Math.cos(a * 16 + t * 2.4);
+    return profile * rib;
+  }
+
+  function draw() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = stage.clientWidth, h = stage.clientHeight;
+    if (!w || !h) return;
+    if (canvas.width !== Math.round(w * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, w, h);
+
+    const ink = css("--graphite"), brass = css("--brass"), line = css("--line");
+    const cx = w / 2, baseY = h * 0.86, height = h * 0.72, rx = Math.min(w * 0.36, height * 0.42), tilt = 0.18;
+    const built = Math.max(1, Math.round(LAYERS * progress));
+
+    // build plate
+    ctx.strokeStyle = line; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.ellipse(cx, baseY + 6, rx * 1.35, rx * 1.35 * tilt, 0, 0, Math.PI * 2); ctx.stroke();
+
+    for (let i = 0; i < built; i++) {
+      const t = i / (LAYERS - 1);
+      const y = baseY - t * height;
+      const last = i === built - 1 && progress < 1;
+      ctx.beginPath();
+      for (let k = 0; k <= 96; k++) {
+        const a = (k / 96) * Math.PI * 2;
+        const r = radiusAt(t, a) * rx;
+        const px = cx + Math.cos(a) * r, py = y + Math.sin(a) * r * tilt;
+        k ? ctx.lineTo(px, py) : ctx.moveTo(px, py);
+      }
+      ctx.closePath();
+      ctx.globalAlpha = last ? 1 : 0.18 + 0.5 * (i / LAYERS);
+      ctx.strokeStyle = last || i % 10 === 0 ? brass : ink;
+      ctx.lineWidth = last ? 2 : 0.8;
+      ctx.stroke();
+    }
+    ctx.globalAlpha = 1;
+
+    // nozzle marker on the active layer
+    if (progress < 1) {
+      const t = (built - 1) / (LAYERS - 1);
+      const y = baseY - t * height;
+      const a = performance.now() / 160;
+      const r = radiusAt(t, a) * rx;
+      const px = cx + Math.cos(a) * r, py = y + Math.sin(a) * r * tilt;
+      ctx.fillStyle = brass;
+      ctx.beginPath(); ctx.moveTo(px - 7, py - 16); ctx.lineTo(px + 7, py - 16); ctx.lineTo(px, py - 3); ctx.closePath(); ctx.fill();
+    }
+    counter.textContent = "Layer " + built + " / " + LAYERS;
+  }
+
+  function buildAnimation() {
+    const start = performance.now(), dur = 2600;
+    function tick(now) {
+      const x = Math.min(1, (now - start) / dur);
+      progress = 1 - Math.pow(1 - x, 2.2);
+      draw();
+      if (x < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  draw();
+  if (!reduce) buildAnimation();
+  new ResizeObserver(draw).observe(stage);
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => requestAnimationFrame(draw));
+  new MutationObserver(() => requestAnimationFrame(draw)).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+  /* 2. Pinned strip */
+  const strip = document.getElementById("industries");
+  const panels = strip.querySelectorAll(".panel");
+  const tabs = strip.querySelectorAll(".strip-progress button");
+  const wide = window.matchMedia("(min-width: 861px) and (min-height: 640px)");
+  let active = 0;
+  function setPinned() { strip.classList.toggle("is-pinned", !reduce && wide.matches); }
+  setPinned(); wide.addEventListener("change", () => { setPinned(); onScroll(); });
+  function setActive(i) {
+    if (i === active) return;
+    active = i;
+    panels.forEach((p, n) => p.classList.toggle("is-active", n === i));
+    tabs.forEach((b, n) => b.setAttribute("aria-current", n === i ? "true" : "false"));
+  }
+  tabs.forEach((b) => b.addEventListener("click", () => {
+    const i = +b.dataset.go;
+    const top = strip.getBoundingClientRect().top + window.scrollY;
+    const span = strip.offsetHeight - window.innerHeight;
+    window.scrollTo({ top: top + span * ((i + 0.5) / 3), behavior: reduce ? "auto" : "smooth" });
+  }));
+
+  /* 3. Before / after gears */
+  function gearPath(teeth, rOuter, rRoot, missing) {
+    let d = "";
+    const step = (Math.PI * 2) / teeth;
+    for (let i = 0; i < teeth; i++) {
+      const a0 = i * step, broken = missing.includes(i);
+      const tip = broken ? rRoot : rOuter;
+      const pts = [
+        [a0, rRoot], [a0 + step * 0.18, tip], [a0 + step * 0.5, tip], [a0 + step * 0.68, rRoot]
+      ];
+      pts.forEach(([a, r], k) => {
+        const x = (Math.cos(a) * r).toFixed(2), y = (Math.sin(a) * r).toFixed(2);
+        d += (i === 0 && k === 0 ? "M" : "L") + x + " " + y + " ";
+      });
+    }
+    return d + "Z";
+  }
+  const NS = "http://www.w3.org/2000/svg";
+  function gear(svg, missing, cracked) {
+    const p = document.createElementNS(NS, "path");
+    p.setAttribute("d", gearPath(14, 92, 74, missing));
+    p.setAttribute("fill", cracked ? "var(--vellum)" : "color-mix(in srgb, var(--brass) 22%, var(--plaster))");
+    p.setAttribute("stroke", cracked ? "var(--graphite-soft)" : "var(--brass)");
+    p.setAttribute("stroke-width", "2"); p.setAttribute("stroke-linejoin", "round");
+    svg.appendChild(p);
+    const hub = document.createElementNS(NS, "circle");
+    hub.setAttribute("r", "22"); hub.setAttribute("fill", "var(--plaster)");
+    hub.setAttribute("stroke", cracked ? "var(--graphite-soft)" : "var(--brass)"); hub.setAttribute("stroke-width", "2");
+    svg.appendChild(hub);
+    if (cracked) {
+      const c = document.createElementNS(NS, "path");
+      c.setAttribute("d", "M20 -10 L38 -22 L46 -14 L64 -30 L74 -26");
+      c.setAttribute("fill", "none"); c.setAttribute("stroke", "var(--graphite)"); c.setAttribute("stroke-width", "2.5");
+      svg.appendChild(c);
+    }
+  }
+  gear(document.getElementById("gear-before"), [11, 12, 13], true);
+  gear(document.getElementById("gear-after"), [], false);
+  const compare = document.getElementById("compare");
+  const range = document.getElementById("ba-range");
+  range.addEventListener("input", () => compare.style.setProperty("--pos", range.value + "%"));
+
+  /* 4. Process depth layers + shared scroll loop */
+  const nums = document.querySelectorAll(".step-num");
+  let ticking = false;
+  function onScroll() {
+    ticking = false;
+    const vh = window.innerHeight, y = window.scrollY;
+    if (!reduce) stage.style.transform = "translateY(" + (y * 0.18).toFixed(1) + "px)";
+    if (strip.classList.contains("is-pinned")) {
+      const span = strip.offsetHeight - vh;
+      const p = Math.min(0.999, Math.max(0, -strip.getBoundingClientRect().top / span));
+      setActive(Math.floor(p * 3));
+    }
+    if (!reduce) nums.forEach((n) => {
+      const r = n.parentElement.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > vh) return;
+      const off = (r.top + r.height / 2 - vh / 2) * parseFloat(n.dataset.depth);
+      n.style.transform = "translateY(" + off.toFixed(1) + "px)";
+    });
+  }
+  window.addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(onScroll); } }, { passive: true });
+  window.addEventListener("resize", onScroll);
+  onScroll();
+
+  /* Quote form (prototype only) */
+  document.getElementById("quote-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("form-note").textContent = "Prototype: the form is not connected yet. On the live site this goes to the studio inbox.";
+  });
+})();
+</script>
