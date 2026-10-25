@@ -52,3 +52,13 @@
 ## Next phase (after agreement)
 - Design direction: visual style, palette, typography, parallax moments, page map.
 - Stack proposal: static site generator (Astro) + form backend for RFQ uploads + Netlify/Vercel hosting.
+
+## Design decisions (round 2)
+- Visual direction: Luxury Atelier — warm neutrals, serif display headings, large photography.
+  - Mitigation for industrial/auto credibility: spec-sheet module (material, tolerance, process) on industrial pages.
+- Parallax: all 4 approved, each used once on the homepage, GPU-only transforms, `prefers-reduced-motion` fallback, simplified on mobile.
+  1. Hero layer-build (object prints layer-by-layer on scroll)
+  2. Pinned vertical scroll-strip: Gifting → Industrial/Auto → Interiors
+  3. Before/after slider (broken part vs printed replacement)
+  4. Process timeline depth layers: Sketch → CAD → Print → Finish
+- Stack (default, no preference given): Astro static + Netlify (Forms w/ STL/STEP upload, `_redirects` for Shopify 301s).
