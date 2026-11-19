@@ -7,7 +7,7 @@
 <meta name="description" content="Studio Nexify — design + 3D printing studio in Vadodara. Corporate gifting, industrial &amp; automotive parts, interiors. Our new site is mid-print. Please don't touch the bed.">
 <meta name="robots" content="index,follow">
 <meta name="theme-color" content="#6b8fe0">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='95 105 335 375'%3E%3Cg fill='none' stroke-width='54' stroke-linecap='round'%3E%3Cpath stroke='%23a5d37f' d='M165 455C122 350 108 250 150 192C190 140 258 128 306 162'/%3E%3Cpath stroke='%2377c47b' d='M392 143C290 166 228 252 228 352C228 418 252 443 280 440C330 434 342 362 336 302C331 246 312 200 288 176'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="canonical" href="https://www.studionexify.com/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,9 +87,9 @@ h1 span{display:block}
 .env b{font-size:14px;font-weight:600}
 .fields small{font-size:11px;font-weight:400;color:var(--ink2);letter-spacing:.04em}
 .fields b{font-size:14px;font-weight:600}
-.lg{height:30px;width:27px;flex:none;margin-right:-4px}
-.wm{font-size:23px;font-weight:600;letter-spacing:-.02em;color:var(--logo);line-height:1}
-.brand{padding:0 22px 0 18px;gap:6px}
+.pill .logo{height:38px;width:auto;display:block;overflow:visible}
+.wm{fill:var(--logo)}
+.brand{padding:0 20px 0 16px}
 
 .rail{position:absolute;z-index:5;left:clamp(12px,2vw,26px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:6px;padding:8px;border-radius:999px;background:var(--pill);border:1px solid var(--line)}
 .ib{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;border:0;background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;padding:0;transition:background .2s}
@@ -136,7 +136,7 @@ h3{font-size:1.2rem;margin-top:4px}
 .spec dt{font-size:11px;color:var(--ink2);letter-spacing:.04em}
 .spec dd{margin:2px 0 0;font-size:13.5px;font-weight:600;font-variant-numeric:tabular-nums}
 .badge{position:absolute;z-index:6;left:50%;bottom:clamp(14px,2vw,24px);transform:translateX(-50%);width:68px;height:68px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 10px 30px rgba(30,20,110,.35),0 0 0 5px rgba(255,255,255,.35)}
-.badge svg{width:34px;height:38px}
+.badge svg{width:30px;height:36px}
 .toast{position:absolute;z-index:9;left:50%;top:84px;transform:translate(-50%,-14px);opacity:0;pointer-events:none;padding:10px 18px;border-radius:999px;background:var(--ink);color:var(--glass-solid);font-size:13.5px;font-weight:600;transition:.3s}
 .toast.show{opacity:1;transform:translate(-50%,0)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -147,7 +147,7 @@ h3{font-size:1.2rem;margin-top:4px}
 @media (max-width:719px){
   .frame{min-height:540px}
   .pill{height:46px;padding:0 16px;font-size:14px}
-  .env{height:46px;padding:0 14px 0 8px;gap:8px}.env small{display:none}.env b{font-size:13px}.env .ei{width:28px;height:28px}
+  .pill .logo{height:32px}.brand{padding:0 14px}.tr{min-width:0;flex:0 1 auto}.env{min-width:0;height:46px;padding:0 14px 0 8px;gap:8px}.env div{min-width:0}.env b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.env small{display:none}.env b{font-size:13px}.env .ei{width:28px;height:28px}
   .hero{top:66px;padding:0 14px}
   h1{font-size:clamp(2.2rem,11.2vw,3.4rem)}
   .eyebrow{font-size:10.5px;padding:6px 11px;margin-bottom:10px}
@@ -182,11 +182,8 @@ h3{font-size:1.2rem;margin-top:4px}
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <defs>
-    <linearGradient id="nxA" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b9dc82"/><stop offset=".6" stop-color="#8ccb7e"/><stop offset="1" stop-color="#4fa772"/></linearGradient>
-    <linearGradient id="nxB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b9dc82"/><stop offset=".45" stop-color="#8ccb7e"/><stop offset="1" stop-color="#5fba78"/></linearGradient>
-  </defs>
-  <g id="nx" fill="none" stroke-width="54" stroke-linecap="round" stroke-linejoin="round"><path stroke="url(#nxA)" d="M165 455C122 350 108 250 150 192C190 140 258 128 306 162"/><path stroke="url(#nxB)" d="M392 143C290 166 228 252 228 352C228 418 252 443 280 440C330 434 342 362 336 302C331 246 312 200 288 176"/></g>
+  <defs><linearGradient id="nxg1" x1="4.2" y1="34.57" x2="57.19" y2="34.57" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b4d781"/><stop offset=".5" stop-color="#5dbd79"/><stop offset=".99" stop-color="#1e4a8a"/></linearGradient><linearGradient id="nxg2" x1="38.49" y1="3.57" x2="38.49" y2="71.6" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b4d781"/><stop offset="1" stop-color="#5dbd79"/></linearGradient><linearGradient id="nxg3" x1="128.53" y1="0.51" x2="128.53" y2="64.57" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#b4d781"/><stop offset="1" stop-color="#5dbd79"/></linearGradient></defs>
+  <g id="nxmark"><path fill="url(#nxg1)" d="M38.13,6.35a45.29,45.29,0,0,0-7.74,6.27,14.65,14.65,0,0,0-2.06-1.32,11.56,11.56,0,0,0-5.41-1.45,8.42,8.42,0,0,0-1.33.1,10.5,10.5,0,0,0-4.83,2.13,15.05,15.05,0,0,0-3.86,4.44c-2,3.53-2.92,8.05-3.06,12.81,0,1-.05,2.09-.05,3.13a86.16,86.16,0,0,0,5.42,30.07A4.89,4.89,0,0,1,6,65.84,95.86,95.86,0,0,1,0,32.46Q0,30.74.06,29C.24,23.32,1.25,17.2,4.41,11.65a24.66,24.66,0,0,1,6.42-7.36,20.49,20.49,0,0,1,9.32-4,18.44,18.44,0,0,1,2.77-.2,21.4,21.4,0,0,1,10,2.59A25.61,25.61,0,0,1,38.13,6.35Z"/><path fill="url(#nxg2)" d="M59.32,3.94A4.9,4.9,0,0,0,53.57.09,44.72,44.72,0,0,0,38.13,6.35a45.29,45.29,0,0,0-7.74,6.27,43.51,43.51,0,0,0-4.8,5.76,45.22,45.22,0,0,0-8,25.72A43.86,43.86,0,0,0,18.1,51a24.16,24.16,0,0,0,3.74,10.18,16,16,0,0,0,4.56,4.37,13.35,13.35,0,0,0,6.46,2.07h.54a13.48,13.48,0,0,0,7.39-2.3,16.53,16.53,0,0,0,5-5.21,22.27,22.27,0,0,0,2.49-6.17A40.14,40.14,0,0,0,49.2,48q.33-3.52.33-7.06a76.38,76.38,0,0,0-1.08-12.81,53.24,53.24,0,0,0-2.55-9.8A36.09,36.09,0,0,0,44,14.21,35,35,0,0,1,55.47,9.7,4.9,4.9,0,0,0,59.32,3.94ZM39.45,47.11a29.74,29.74,0,0,1-.68,4.45A12.17,12.17,0,0,1,37.41,55a6.86,6.86,0,0,1-2,2.11,3.71,3.71,0,0,1-2,.69h-.13a3.44,3.44,0,0,1-1.67-.59,6,6,0,0,1-1.73-1.67,14.71,14.71,0,0,1-2.1-6.11,33.9,33.9,0,0,1-.42-5.33A35.5,35.5,0,0,1,33.62,24a32.4,32.4,0,0,1,2.65-3.32c.16.37.31.75.46,1.14a42.11,42.11,0,0,1,2.07,8A67.57,67.57,0,0,1,39.74,41Q39.74,44,39.45,47.11Z"/></g>
 </svg>
 <div class="mist" aria-hidden="true"><svg viewBox="0 0 1000 600" preserveAspectRatio="xMidYMax slice"><path fill="rgba(255,255,255,.28)" d="M0 600V380l120-90 90 60 140-170 120 120 110-80 150 150 110-100 160 130V600z"/><path fill="rgba(0,0,0,.08)" d="M0 600V460l160-60 120 50 180-110 160 100 140-70 240 90V600z"/></svg></div>
 
@@ -204,7 +201,7 @@ h3{font-size:1.2rem;margin-top:4px}
   <canvas id="stage" aria-hidden="true"></canvas>
 
   <header class="top">
-    <a class="pill brand" href="/" aria-label="Nexify — Studio Nexify home"><svg class="lg" viewBox="95 105 335 375" aria-hidden="true"><use href="#nx"/></svg><span class="wm">exify</span></a>
+    <a class="pill brand" href="/" aria-label="Nexify — Studio Nexify home"><svg class="logo" viewBox="0 0 189.9 83.59" role="img" aria-label="Studio Nexify"><use href="#nxmark"/><path class="wm" d="M73.14,56.06a10.85,10.85,0,0,0,10-6.41l5.65,4.18a16.52,16.52,0,0,1-15.55,9.9c-8.92,0-17.91-6.21-17.91-18.06,0-12.12,8.78-18,17.28-18,8,0,15.76,5.23,15.76,15.34v4H60v.7C67.22,47.7,62.2,56.06,73.14,56.06Zm7.11-16c-1.11-3.14-4-4.67-7.18-4.67A10.26,10.26,0,0,0,64.5,40Z"/><path class="wm" d="M92.59,63.24l8.92-17.43L92.59,28.39h7.81l5,9.83,5-9.83h7.8l-8.92,17.42,8.92,17.43h-7.8l-5-9.83-5,9.83Z"/><path class="wm" d="M125,28.39h7V63.24h-7Z"/><path class="wm" d="M142.92,36.54A1.8,1.8,0,0,0,141,34.66h-1.89V28.39h3.77V24c0-6.28,3.62-9.76,9.76-9.76h4.39v7h-2.58c-4,0-4.81,2-4.6,7.18h4.53v6.27h-8.51v.7c1.75,0,4,.9,4,3.62V63.24h-7Z"/><path class="wm" d="M167.94,28.39l7.39,28.37,7.39-28.37h7.18L178.33,72.86c-2,7.53-7,10.73-11.92,10.73-5.58,0-10.95-4.25-10.95-11.43,0-6.83,6.35-12.82,13.11-13.59l-7.81-30.18Zm-1.53,47.74c1.81,0,4-1.6,5.23-5.57l2-6.55c-1.19-.49-10.53.62-10.53,8.15C163.13,74.6,164.6,76.13,166.41,76.13Z"/><path fill="url(#nxg3)" d="M128.49,14.45c5.78,0,5.78,8.57,0,8.57S122.84,14.45,128.49,14.45Z"/></svg></a>
     <div class="pill fields">
       <a href="tel:+919773048267" aria-label="Call Studio Nexify on +91 97730 48267"><small>Call</small><b>+91 97730 48267</b></a>
       <a href="mailto:connect@studionexify.com?subject=Hello%20Studio%20Nexify" aria-label="Email connect@studionexify.com"><small>Email</small><b>connect@studionexify.com</b></a>
@@ -258,7 +255,7 @@ h3{font-size:1.2rem;margin-top:4px}
     </dl>
   </aside>
 
-  <a class="badge" href="#top" aria-label="Studio Nexify"><svg viewBox="95 105 335 375"><use href="#nx"/></svg></a>
+  <a class="badge" href="#top" aria-label="Studio Nexify"><svg viewBox="0 0 60 72" aria-hidden="true"><use href="#nxmark"/></svg></a>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <p class="sr">Studio Nexify is a design and 3D printing studio in Vadodara, India. A new website is coming soon. For quotes, call +91 97730 48267 or email connect@studionexify.com. Instagram: studio.nexify.</p>
 </main>
