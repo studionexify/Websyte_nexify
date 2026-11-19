@@ -62,3 +62,6 @@
   3. Before/after slider (broken part vs printed replacement)
   4. Process timeline depth layers: Sketch → CAD → Print → Finish
 - Stack (default, no preference given): Astro static + Netlify (Forms w/ STL/STEP upload, `_redirects` for Shopify 301s).
+
+## Coming-soon page theme (round 3)
+- `site/index.html` deliberately uses the glass/dusk-sky look from the user's reference (pill nav, frosted cards, ghost display headline) with a canvas 3D-printer animation. This diverges from the "Luxury Atelier" direction above; treat it as the coming-soon skin only until the main-site direction is re-confirmed.
