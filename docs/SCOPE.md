@@ -65,3 +65,7 @@
 
 ## Coming-soon page theme (round 3)
 - `site/index.html` deliberately uses the glass/dusk-sky look from the user's reference (pill nav, frosted cards, ghost display headline) with a canvas 3D-printer animation. This diverges from the "Luxury Atelier" direction above; treat it as the coming-soon skin only until the main-site direction is re-confirmed.
+
+### Coming-soon page: live sky + contact (round 4)
+- Sky follows real sun/moon position (computed in-browser from time + location; Vadodara by default for IST visitors, opt-in geolocation via the target button) and Open-Meteo weather (clouds, rain, snow, fog, storms). Toggle cycles Live → Day → Night.
+- Contact: +91 97730 48267, connect@studionexify.com, Vadodara, Gujarat, @studio.nexify. Logo is an SVG redraw of the ribbon-N mark + "exify" wordmark; replace with the official SVG when available.
