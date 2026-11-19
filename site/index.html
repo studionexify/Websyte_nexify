@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Studio Nexify — Coming Soon</title>
+<meta name="description" content="Studio Nexify — design + 3D printing studio in Vadodara. Concept to part. New website coming soon.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://www.studionexify.com/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Hanken+Grotesk:wght@400;500&family=JetBrains+Mono:wght@400&display=swap">
+<style>
+:root{--bg:#ECE8E1;--ink:#1E1C19;--soft:#5A554D;--brass:#8C6A34;--line:#C8C0B3;--on:#F7F3EC}
+@media (prefers-color-scheme:dark){:root{--bg:#14130F;--ink:#ECE6DA;--soft:#ABA394;--brass:#CDA661;--line:#36322A;--on:#16130E;color-scheme:dark}}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hanken Grotesk",Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
+main{flex:1;display:grid;place-items:center;padding:48px 16px}
+.c{max-width:760px;text-align:center}
+.eb{font-family:"JetBrains Mono",monospace;font-size:.8125rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft)}
+h1{font-family:"Bodoni Moda",Georgia,serif;font-weight:500;font-size:clamp(2.6rem,8vw,5.4rem);line-height:1.02;margin:.4em 0 .3em;letter-spacing:-.01em}
+h1 em{color:var(--brass)}
+p.lead{font-size:1.15rem;color:var(--soft);margin:0 auto 2rem;max-width:34ch}
+.layers{display:flex;justify-content:center;gap:4px;margin:0 auto 2rem}
+.layers i{display:block;width:28px;height:3px;background:var(--line);animation:b 2.4s ease-in-out infinite}
+.layers i:nth-child(2){animation-delay:.2s}.layers i:nth-child(3){animation-delay:.4s}.layers i:nth-child(4){animation-delay:.6s}.layers i:nth-child(5){animation-delay:.8s}
+@keyframes b{0%,100%{background:var(--line)}50%{background:var(--brass)}}
+@media (prefers-reduced-motion:reduce){.layers i{animation:none}}
+.cta{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn{display:inline-block;padding:14px 24px;border:1px solid var(--ink);text-decoration:none;color:var(--ink);font-weight:500;border-radius:2px}
+.btn.p{background:var(--ink);color:var(--bg)}
+.btn:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+footer{padding:24px 16px;border-top:1px solid var(--line);text-align:center;font-family:"JetBrains Mono",monospace;font-size:.75rem;color:var(--soft)}
+footer a{color:inherit}
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Studio Nexify","url":"https://www.studionexify.com/","address":{"@type":"PostalAddress","addressLocality":"Vadodara","addressRegion":"Gujarat","addressCountry":"IN"},"sameAs":["https://www.instagram.com/studio.nexify/"]}</script>
+</head>
+<body>
+<main><div class="c">
+  <div class="eb">Studio Nexify · Vadodara</div>
+  <h1>Concept to <em>part.</em></h1>
+  <p class="lead">Design + 3D printing for corporate gifting, industrial &amp; automotive, and interiors. Our new studio site is being printed, layer by layer.</p>
+  <div class="layers" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+  <div class="cta">
+    <a class="btn p" href="mailto:connect@studionexify.com">Request a quote</a>
+    <a class="btn" href="https://www.instagram.com/studio.nexify/" rel="noopener">Instagram</a>
+  </div>
+</div></main>
+<footer>© <span id="y">2026</span> Studio Nexify · Made in Vadodara, ships pan-India + export</footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
